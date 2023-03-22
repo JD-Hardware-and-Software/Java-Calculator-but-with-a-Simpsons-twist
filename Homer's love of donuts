@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class SimpsonCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Simpson Calculator!");
+
+        int donuts = 0;
+
+        while (true) {
+            System.out.println("Enter an operator (+, -, *, /) or 'd' to eat a donut:");
+            String operator = scanner.nextLine();
+
+            if (operator.equals("d")) {
+                System.out.println("Mmm, donuts...");
+                donuts++;
+                continue;
+            }
+
+            if (!operator.equals("+") && !operator.equals("-") && !operator.equals("*") && !operator.equals("/")) {
+                System.out.println("D'oh! Invalid operator. Please enter a valid operator.");
+                continue;
+            }
+
+            System.out.println("Enter the first operand:");
+            double operand1 = scanner.nextDouble();
+
+            System.out.println("Enter the second operand:");
+            double operand2 = scanner.nextDouble();
+
+            double result;
+
+            switch (operator) {
+                case "+":
+                    result = operand1 + operand2;
+                    break;
+                case "-":
+                    result = operand1 - operand2;
+                    break;
+                case "*":
+                    result = operand1 * operand2;
+                    break;
+                case "/":
+                    if (operand2 == 0) {
+                        System.out.println("Ay Caramba! You can't divide by zero!");
+                        continue;
+                    }
+                    result = operand1 / operand2;
+                    break;
+                default:
+                    result = 0;
+            }
+
+            System.out.println("Result: " + result);
+            scanner.nextLine(); // Consume newline character left in buffer
+        }
+    }
+}
